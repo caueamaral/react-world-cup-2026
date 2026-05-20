@@ -1,8 +1,13 @@
 import { useState } from "react"
 
+type Team = {
+    id: string,
+    name: string
+}
+
 type TeamsFormProps = {
-    teams: string[],
-    setTeams: React.Dispatch<React.SetStateAction<string[]>>
+    teams: Team[],
+    setTeams: React.Dispatch<React.SetStateAction<Team[]>>
 }
 
 export function TeamsForm({ teams, setTeams }: TeamsFormProps ) {
@@ -10,7 +15,15 @@ export function TeamsForm({ teams, setTeams }: TeamsFormProps ) {
 
     function formHandle(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault()
-        setTeams([...teams, inputTeam])
+
+        setTeams(currTeams => [
+            ...currTeams,
+            {
+                id: crypto.randomUUID(),
+                name: inputTeam
+            }
+        ])
+        
         setInputTeam('')
     }
 
