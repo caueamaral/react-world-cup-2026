@@ -16,11 +16,13 @@ export function TeamsForm({ teams, setTeams }: TeamsFormProps ) {
     function formHandle(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault()
 
+        if (inputTeam.trim() === '') return
+
         setTeams(currTeams => [
             ...currTeams,
             {
                 id: crypto.randomUUID(),
-                name: inputTeam
+                name: inputTeam.trim()
             }
         ])
         
@@ -37,7 +39,8 @@ export function TeamsForm({ teams, setTeams }: TeamsFormProps ) {
                 onChange={e => setInputTeam(e.target.value)}
             />
             <button
-                className="bg-blue-500 text-white py-2 px-5 cursor-pointer rounded-r-md"
+                className="bg-blue-500 text-white py-2 px-5 cursor-pointer rounded-r-md disabled:bg-gray-400 disabled:cursor-not-allowed disabled:opacity-50"
+                disabled={inputTeam.trim() === ""}
             >
                 Add
             </button>
