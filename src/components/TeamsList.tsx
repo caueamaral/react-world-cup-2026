@@ -27,6 +27,8 @@ export function TeamsList({ teams, setTeams }: TeamsProps) {
     }
 
     function saveEditHandle() {
+        if (editingTeamId === null) return
+        if (editingName.trim() === '') return
 
         setTeams(currentTeams =>
             currentTeams.map(team =>
@@ -57,8 +59,13 @@ export function TeamsList({ teams, setTeams }: TeamsProps) {
                                 ref={editInputRef}
                                 type="text"
                                 value={editingName}
-                                onChange={event => setEditingName(event.target.value)}
                                 className="border border-blue-500 py-1 px-2 rounded w-60"
+                                onChange={event => setEditingName(event.target.value)}
+                                onKeyDown={event => {
+                                    if (event.key === 'Enter') {
+                                        saveEditHandle()
+                                    }
+                                }}
                             />
                         ) : (
                             <span className="border border-transparent py-1 px-2">
@@ -67,7 +74,7 @@ export function TeamsList({ teams, setTeams }: TeamsProps) {
                         )}
 
                         <span className="flex gap-3">
-                            {editingTeamId === team.id && editingName != team.name &&(
+                            {editingTeamId === team.id && editingName != team.name && editingName != '' && (
                                 <button
                                     type="button"
                                     aria-label={`Save changes to ${team.name}`}
