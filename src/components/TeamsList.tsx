@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 type Team = {
     id: string,
@@ -13,6 +13,13 @@ type TeamsProps = {
 export function TeamsList({ teams, setTeams }: TeamsProps) {
     const [editingTeamId, setEditingTeamId] = useState<string | null>(null)
     const [editingName, setEditingName] = useState('')
+    const editInputRef = useRef<HTMLInputElement>(null)
+
+    useEffect(() => {
+        if (editingTeamId !== null) {
+            editInputRef.current?.focus()
+        }
+    }, [editingTeamId])
     
     function editHandle(id: string, name: string) {
         setEditingTeamId(id)
@@ -47,6 +54,7 @@ export function TeamsList({ teams, setTeams }: TeamsProps) {
                     >
                         {editingTeamId === team.id ? (
                             <input
+                                ref={editInputRef}
                                 type="text"
                                 value={editingName}
                                 onChange={event => setEditingName(event.target.value)}
