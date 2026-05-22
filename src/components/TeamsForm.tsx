@@ -1,3 +1,5 @@
+import { useEffect, useRef } from "react"
+
 type Team = {
     id: string,
     name: string
@@ -11,6 +13,12 @@ type TeamsFormProps = {
 }
 
 export function TeamsForm({ teams, setTeams, inputTeam, setInputTeam }: TeamsFormProps ) {
+    const inputRef = useRef<HTMLInputElement>(null)
+
+    useEffect(() => {
+        inputRef.current?.focus()
+    }, [])
+
     function formHandle(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault()
 
@@ -30,6 +38,7 @@ export function TeamsForm({ teams, setTeams, inputTeam, setInputTeam }: TeamsFor
     return (
         <form className="flex" onSubmit={formHandle}>
             <input
+                ref={inputRef}
                 type="text"
                 placeholder="Add a team..."
                 className="bg-gray-300 py-4 px-4 grow rounded-l-md outline-none"
