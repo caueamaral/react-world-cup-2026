@@ -62,7 +62,7 @@ export function TeamsList({ teams, setTeams }: TeamsProps) {
                             {editingTeamId === team.id && editingName != team.name &&(
                                 <button
                                     type="button"
-                                    aria-label={`Edit confirm ${team.name}`}
+                                    aria-label={`Save changes to ${team.name}`}
                                     className="cursor-pointer text-green-700"
                                     onClick={saveEditHandle}
                                 >
