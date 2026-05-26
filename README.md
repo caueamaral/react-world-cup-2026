@@ -1,18 +1,39 @@
-# React + Vite
+React World Cup themed todo team list.
+[See the project](https://caueamaral.github.io/react-worldcup2026-todo).
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<img src="src/images/react-worldcup2026-todo.jpg" alt=" World Cup themed todo in React.js">
 
-Currently, two official plugins are available:
+## React
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Tailwind CSS
+- useEffect()
+- useState()
+- Vite
 
-## React Compiler
+### How to use it
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+Use Node `v24.15.0` for better compatibility.
 
-Note: This will impact Vite dev & build performances.
+1 - Clone the repository.
 
-## Expanding the ESLint configuration
+```sh
+git clone https://github.com/caueamaral/react-worldcup2026-todo.git
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+2 - Install the dependencies.
+
+```sh
+npm install
+```
+
+3 - Start the web server.
+
+```sh
+npm run dev
+```
+
+4 - Open localhost in the browser.
+
+```sh
+http://localhost:5173
+```
